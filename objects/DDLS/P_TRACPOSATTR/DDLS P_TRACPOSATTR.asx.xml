@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?><asx:abap xmlns:asx="http://www.sap.com/abapxml">
+<asx:values>
+<DDDDLSRC>
+<DDDDLSRC>
+<DDLNAME>P_TRACPOSATTR</DDLNAME>
+<AS4LOCAL>N</AS4LOCAL>
+<AS4USER>SAP</AS4USER>
+<AS4DATE>2019-03-04</AS4DATE>
+<AS4TIME>16:52:06</AS4TIME>
+<SOURCE>@ClientHandling.algorithm: #SESSION_VARIABLE 
+@AbapCatalog.sqlViewName: 'PTracposattr'
+@VDM.viewType: #BASIC
+@VDM.private: true
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+//@EndUserText.label: 'CDS view for Treasury: TRLT_POS_ATTRIB with TRAC connection'
+define view P_Tracposattr as select from trlt_pos_attrib as posattrib 
+
+    inner join P_Difsdiff as diff on posattrib.os_guid = diff.trl_oid 
+
+    association to trltc_attrval_st as _TrsyPosFreeDefinedAttribute1
+        on _TrsyPosFreeDefinedAttribute1.attrib = 'S1'
+        and posattrib.pos_attrib_s1 = _TrsyPosFreeDefinedAttribute1.value   
+        and _TrsyPosFreeDefinedAttribute1.langu = $session.system_language
+    
+    association to trltc_attrval_st as _TrsyPosFreeDefinedAttribute2
+        on _TrsyPosFreeDefinedAttribute2.attrib = 'S2'
+        and posattrib.pos_attrib_s2 = _TrsyPosFreeDefinedAttribute2.value   
+        and _TrsyPosFreeDefinedAttribute2.langu = $session.system_language
+    
+    association to trltc_attrval_st as _TrsyPosFreeDefinedAttribute3
+        on _TrsyPosFreeDefinedAttribute3.attrib = 'S3'
+        and posattrib.pos_attrib_s3 = _TrsyPosFreeDefinedAttribute3.value   
+        and _TrsyPosFreeDefinedAttribute3.langu = $session.system_language
+   
+    association to trltc_attrval_mt as _TrsyPosFreeDefinedAttribute4
+        on _TrsyPosFreeDefinedAttribute4.attrib = 'M1'
+        and posattrib.pos_attrib_m1 = _TrsyPosFreeDefinedAttribute4.value        
+        and _TrsyPosFreeDefinedAttribute4.langu = $session.system_language
+    
+    association to trltc_attrval_mt as _TrsyPosFreeDefinedAttribute5
+        on _TrsyPosFreeDefinedAttribute5.attrib = 'M2'
+        and posattrib.pos_attrib_m2 = _TrsyPosFreeDefinedAttribute5.value           
+        and _TrsyPosFreeDefinedAttribute5.langu = $session.system_language
+        
+    association to trltc_attrval_mt as _TrsyPosFreeDefinedAttribute6
+        on _TrsyPosFreeDefinedAttribute6.attrib = 'M3'
+        and posattrib.pos_attrib_m3 = _TrsyPosFreeDefinedAttribute6.value           
+        and _TrsyPosFreeDefinedAttribute6.langu = $session.system_language
+
+{
+    key diff.trac_oid as TracPosAttr_OID,
+        
+        cast (posattrib.pos_attrib_s1 as ftr_gen_free_dfnd_attribute1 ) as TrsyPosFreeDefinedAttribute1,
+        cast (posattrib.pos_attrib_s2 as ftr_gen_free_dfnd_attribute2 ) as TrsyPosFreeDefinedAttribute2,
+        cast (posattrib.pos_attrib_s3 as ftr_gen_free_dfnd_attribute3 ) as TrsyPosFreeDefinedAttribute3,
+        cast (posattrib.pos_attrib_m1 as ftr_gen_free_dfnd_attribute4 ) as TrsyPosFreeDefinedAttribute4,
+        cast (posattrib.pos_attrib_m2 as ftr_gen_free_dfnd_attribute5 ) as TrsyPosFreeDefinedAttribute5,
+        cast (posattrib.pos_attrib_m3 as ftr_gen_free_dfnd_attribute6 ) as TrsyPosFreeDefinedAttribute6,
+        cast (posattrib.pos_attrib_l1 as ftr_gen_free_dfnd_attribute7 ) as TrsyPosFreeDefinedAttribute7,
+        cast (posattrib.pos_attrib_l2 as ftr_gen_free_dfnd_attribute8 ) as TrsyPosFreeDefinedAttribute8,
+        cast (posattrib.pos_attrib_l3 as ftr_gen_free_dfnd_attribute9 ) as TrsyPosFreeDefinedAttribute9,
+        
+        cast (_TrsyPosFreeDefinedAttribute1.text as ftr_gen_free_dfnd_attr1_name ) as TrsyPosFreeDfndAttribute1Name,
+        cast (_TrsyPosFreeDefinedAttribute2.text as ftr_gen_free_dfnd_attr2_name ) as TrsyPosFreeDfndAttribute2Name,
+        cast (_TrsyPosFreeDefinedAttribute3.text as ftr_gen_free_dfnd_attr3_name ) as TrsyPosFreeDfndAttribute3Name,
+        cast (_TrsyPosFreeDefinedAttribute4.text as ftr_gen_free_dfnd_attr4_name ) as TrsyPosFreeDfndAttribute4Name,
+        cast (_TrsyPosFreeDefinedAttribute5.text as ftr_gen_free_dfnd_attr5_name ) as TrsyPosFreeDfndAttribute5Name,
+        cast (_TrsyPosFreeDefinedAttribute6.text as ftr_gen_free_dfnd_attr6_name ) as TrsyPosFreeDfndAttribute6Name
+        
+        
+}
+       
+  
+  
+  
+  
+ /*+[internal] {
+"BASEINFO":
+{
+"FROM":
+[
+"P_DIFSDIFF",
+"TRLTC_ATTRVAL_MT",
+"TRLTC_ATTRVAL_ST",
+"TRLT_POS_ATTRIB"
+],
+"ASSOCIATED":
+[
+"TRLTC_ATTRVAL_MT",
+"TRLTC_ATTRVAL_ST"
+],
+"BASE":
+[],
+"VERSION":0
+}
+}*/</SOURCE>
+<PARENTNAME></PARENTNAME>
+<ACTFLAG></ACTFLAG>
+<CHGFLAG></CHGFLAG>
+<SOURCE_TYPE>V</SOURCE_TYPE>
+<SOURCE_ORIGIN>0</SOURCE_ORIGIN>
+<ABAP_LANGUAGE_VERSION></ABAP_LANGUAGE_VERSION>
+</DDDDLSRC>
+</DDDDLSRC>
+<DDDDLSRCT>
+<DDDDLSRCT>
+<DDLNAME>P_TRACPOSATTR</DDLNAME>
+<DDLANGUAGE>E</DDLANGUAGE>
+<AS4LOCAL>N</AS4LOCAL>
+<DDTEXT>CDS view for Treasury: TRLT_POS_ATTRIB with TRAC connection</DDTEXT>
+</DDDDLSRCT>
+</DDDDLSRCT>
+<DDFIELDANNO>
+<DDFIELDANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<LFIELDNAME>MANDT</LFIELDNAME>
+<NAME>ABAPCATALOG</NAME>
+<POSITION>1</POSITION>
+<VALUE></VALUE>
+</DDFIELDANNO>
+<DDFIELDANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<LFIELDNAME>MANDT</LFIELDNAME>
+<NAME>ABAPCATALOG.INTERNAL</NAME>
+<POSITION>2</POSITION>
+<VALUE></VALUE>
+</DDFIELDANNO>
+<DDFIELDANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<LFIELDNAME>MANDT</LFIELDNAME>
+<NAME>ABAPCATALOG.INTERNAL.ISMANDT</NAME>
+<POSITION>3</POSITION>
+<VALUE></VALUE>
+</DDFIELDANNO>
+</DDFIELDANNO>
+<DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ABAPCATALOG</NAME>
+<POSITION>1</POSITION>
+<VALUE></VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ABAPCATALOG.COMPILER</NAME>
+<POSITION>3</POSITION>
+<VALUE></VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ABAPCATALOG.COMPILER.COMPAREFILTER</NAME>
+<POSITION>4</POSITION>
+<VALUE>true</VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ABAPCATALOG.SQLVIEWNAME</NAME>
+<POSITION>2</POSITION>
+<VALUE>'PTracposattr'</VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ACCESSCONTROL</NAME>
+<POSITION>10</POSITION>
+<VALUE></VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>ACCESSCONTROL.AUTHORIZATIONCHECK</NAME>
+<POSITION>11</POSITION>
+<VALUE>#NOT_REQUIRED</VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>CLIENTHANDLING</NAME>
+<POSITION>5</POSITION>
+<VALUE></VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>CLIENTHANDLING.ALGORITHM</NAME>
+<POSITION>6</POSITION>
+<VALUE>#SESSION_VARIABLE</VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>VDM</NAME>
+<POSITION>7</POSITION>
+<VALUE></VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>VDM.PRIVATE</NAME>
+<POSITION>9</POSITION>
+<VALUE>true</VALUE>
+</DDHEADANNO>
+<DDHEADANNO>
+<STRUCOBJN>P_TRACPOSATTR</STRUCOBJN>
+<NAME>VDM.VIEWTYPE</NAME>
+<POSITION>8</POSITION>
+<VALUE>#BASIC</VALUE>
+</DDHEADANNO>
+</DDHEADANNO>
+<TADIR>
+<TADIR>
+<PGMID>R3TR</PGMID>
+<OBJECT>DDLS</OBJECT>
+<OBJ_NAME>P_TRACPOSATTR</OBJ_NAME>
+<KORRNUM></KORRNUM>
+<SRCSYSTEM>SAP</SRCSYSTEM>
+<AUTHOR>SAP</AUTHOR>
+<SRCDEP></SRCDEP>
+<DEVCLASS>FTR_ACCOUNTING_ADAPTOR_CORE</DEVCLASS>
+<GENFLAG></GENFLAG>
+<EDTFLAG></EDTFLAG>
+<CPROJECT> S</CPROJECT>
+<MASTERLANG>E</MASTERLANG>
+<VERSID>0.0</VERSID>
+<PAKNOCHECK></PAKNOCHECK>
+<OBJSTABLTY></OBJSTABLTY>
+<COMPONENT>S4CORE</COMPONENT>
+<CRELEASE>101</CRELEASE>
+<DELFLAG></DELFLAG>
+<TRANSLTTXT></TRANSLTTXT>
+<CREATED_ON>2015-11-01</CREATED_ON>
+<CHECK_DATE>2015-11-01</CHECK_DATE>
+<CHECK_CFG></CHECK_CFG>
+</TADIR>
+</TADIR>
+</asx:values>
+</asx:abap>
